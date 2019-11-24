@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6599DA71-7B54-4DCF-9CDA-9630C51BA73F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CartilhaMagica</RootNamespace>
+    <AssemblyName>CartilhaMagica</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>book.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataWordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataWordsForm.Designer.cs">
+      <DependentUpon>DataWordsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ControlManager.cs" />
+    <Compile Include="Manager\HardDrive.cs" />
+    <Compile Include="Manager\SetupManager.cs" />
+    <Compile Include="SyllableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SyllableForm.Designer.cs">
+      <DependentUpon>SyllableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WordsForm.Designer.cs">
+      <DependentUpon>WordsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Manager\Settings.cs" />
+    <Compile Include="Manager\SpeechManager.cs" />
+    <Compile Include="VoiceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoiceSettingsForm.Designer.cs">
+      <DependentUpon>VoiceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\WordManager.cs" />
+    <EmbeddedResource Include="DataWordsForm.resx">
+      <DependentUpon>DataWordsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SyllableForm.resx">
+      <DependentUpon>SyllableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="VoiceSettingsForm.resx">
+      <DependentUpon>VoiceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WordsForm.resx">
+      <DependentUpon>WordsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Always In My Heart.ttf" />
+    <None Include="Resources\boca.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\acerto.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caneta.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Leia-me.txt" />
+    <None Include="Resources\hand.png" />
+    <None Include="Resources\keyboard.png" />
+    <None Include="Resources\maiuscula.png" />
+    <None Include="Resources\menino.png" />
+    <None Include="Resources\mouth.png" />
+    <None Include="Resources\pencil64.png" />
+    <None Include="Resources\pencil100.png" />
+    <None Include="Resources\robot.png" />
+    <None Include="Resources\seta_cima_64.png" />
+    <None Include="Resources\shift.png" />
+    <None Include="Resources\altura.png" />
+    <None Include="Resources\minuscula.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\left arrow.png" />
+    <None Include="Resources\right arrow.png" />
+    <None Include="Resources\seta esquerda.PNG" />
+    <None Include="Resources\seta direita.PNG" />
+    <None Include="Resources\silver medal.png" />
+    <None Include="Resources\bronze_medal.png" />
+    <None Include="Resources\gold medal.png" />
+    <None Include="Resources\caderninho.png" />
+    <None Include="Resources\lapis2.jpg" />
+    <None Include="Resources\lousa1.jpg" />
+    <None Include="Resources\cadernao1.png" />
+    <None Include="Resources\folha caderno.png" />
+    <None Include="Resources\cadernao2.png" />
+    <None Include="Resources\robot teacher.jfif" />
+    <None Include="Resources\robot teacher.png" />
+    <None Include="Resources\red robot.png" />
+    <None Include="Resources\cadernao3.png" />
+    <None Include="Resources\lapis4.png" />
+    <None Include="Resources\lapis5.png" />
+    <None Include="Resources\0-4688_pencil-clipart-png-transparent-background-pencil-icon.png" />
+    <None Include="Resources\0-4688_pencil-clipart.png" />
+    <None Include="Resources\clipartwiki.com-robot-clip-art-128797.png" />
+    <None Include="Resources\clipartwiki.com-technology-clip-art-144496.png" />
+    <Content Include="book.ico" />
+    <None Include="settings.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
