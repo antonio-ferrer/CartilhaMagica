@@ -66,7 +66,6 @@
       <DependentUpon>InformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\ControlManager.cs" />
-    <Compile Include="Manager\HardDrive.cs" />
     <Compile Include="Manager\SetupManager.cs" />
     <Compile Include="SyllableForm.cs">
       <SubType>Form</SubType>

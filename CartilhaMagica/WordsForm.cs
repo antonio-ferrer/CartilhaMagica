@@ -158,7 +158,7 @@ namespace CartilhaMagica
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Ocorreu uma falha ao carregar o nível!\r\nVerifique se há palavras cadastradas o suficiente.\r\nPara cadastrar mais palavras acesse a opção [Configurar Palavras]", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu uma falha ao carregar o nível!\r\nVerifique se há palavras cadastradas o suficiente.\r\nPara cadastrar mais palavras acesse a opção [Configurar Palavras]\r\n" + ex, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
             

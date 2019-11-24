@@ -6,6 +6,9 @@ A atratatividade para os pequenos é o módulo de voz do windows 10. O google te
 
 A parte visual não é o meu forte e eu espero que talvez você possa dar um jeito nisso! Talvez migrando para WPF, ou fazendo uma UI mista de html... 
 
+
+O arquivo settings.dat é um xml que contém as informações para o execução do aplicativo. Ele está "embedado" nos Resources.
+
 Algumas idéias para implementação: 
 
 	* módulo para aprendizado de inglês

@@ -441,8 +441,7 @@
             this.Name = "SyllableForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cartilha mágica     *     pressione F1 para opções     *     cartilha.magica@gmx." +
-    "com.br";
+            this.Text = "Cartilha mágica     *     pressione F1 para opções ";
             this.SizeChanged += new System.EventHandler(this.SyllableForm_SizeChanged);
             this.ctxMenu.ResumeLayout(false);
             this.pnlLetter.ResumeLayout(false);

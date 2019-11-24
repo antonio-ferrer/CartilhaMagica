@@ -33,6 +33,7 @@
             this.ctxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuConfigVoice = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfigWords = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRestore = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuLevel = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLevelEasy = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.pnlUpperHandWrite = new System.Windows.Forms.Panel();
             this.pnlLowerHandwrite = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.mnuRestore = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenu.SuspendLayout();
             this.pnlUpperLetter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUpperKeyboard)).BeginInit();
@@ -109,7 +109,7 @@
             // mnuConfigVoice
             // 
             this.mnuConfigVoice.Name = "mnuConfigVoice";
-            this.mnuConfigVoice.Size = new System.Drawing.Size(180, 22);
+            this.mnuConfigVoice.Size = new System.Drawing.Size(177, 22);
             this.mnuConfigVoice.Text = "Configurar voz";
             this.mnuConfigVoice.ToolTipText = "Abre o formulário para configuração da voz";
             this.mnuConfigVoice.Click += new System.EventHandler(this.mnuConfigVoice_Click);
@@ -117,15 +117,22 @@
             // mnuConfigWords
             // 
             this.mnuConfigWords.Name = "mnuConfigWords";
-            this.mnuConfigWords.Size = new System.Drawing.Size(180, 22);
+            this.mnuConfigWords.Size = new System.Drawing.Size(177, 22);
             this.mnuConfigWords.Text = "Configurar palavras";
             this.mnuConfigWords.ToolTipText = "Permite configurar, criar e remover palavras para o dicionário";
             this.mnuConfigWords.Click += new System.EventHandler(this.mnuConfigWords_Click);
             // 
+            // mnuRestore
+            // 
+            this.mnuRestore.Name = "mnuRestore";
+            this.mnuRestore.Size = new System.Drawing.Size(177, 22);
+            this.mnuRestore.Text = "Restaurar";
+            this.mnuRestore.Click += new System.EventHandler(this.mnuRestore_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(174, 6);
             // 
             // mnuLevel
             // 
@@ -134,39 +141,39 @@
             this.mnuLevelAverage,
             this.mnuLevelHard});
             this.mnuLevel.Name = "mnuLevel";
-            this.mnuLevel.Size = new System.Drawing.Size(180, 22);
+            this.mnuLevel.Size = new System.Drawing.Size(177, 22);
             this.mnuLevel.Text = "Nível";
             // 
             // mnuLevelEasy
             // 
             this.mnuLevelEasy.Name = "mnuLevelEasy";
-            this.mnuLevelEasy.Size = new System.Drawing.Size(180, 22);
+            this.mnuLevelEasy.Size = new System.Drawing.Size(108, 22);
             this.mnuLevelEasy.Text = "Fácil";
             this.mnuLevelEasy.Click += new System.EventHandler(this.mnuLevelEasy_Click);
             // 
             // mnuLevelAverage
             // 
             this.mnuLevelAverage.Name = "mnuLevelAverage";
-            this.mnuLevelAverage.Size = new System.Drawing.Size(180, 22);
+            this.mnuLevelAverage.Size = new System.Drawing.Size(108, 22);
             this.mnuLevelAverage.Text = "Médio";
             this.mnuLevelAverage.Click += new System.EventHandler(this.mnuLevelAverage_Click);
             // 
             // mnuLevelHard
             // 
             this.mnuLevelHard.Name = "mnuLevelHard";
-            this.mnuLevelHard.Size = new System.Drawing.Size(180, 22);
+            this.mnuLevelHard.Size = new System.Drawing.Size(108, 22);
             this.mnuLevelHard.Text = "Difícil";
             this.mnuLevelHard.Click += new System.EventHandler(this.mnuLevelHard_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(174, 6);
             // 
             // mnuSyllable
             // 
             this.mnuSyllable.Name = "mnuSyllable";
-            this.mnuSyllable.Size = new System.Drawing.Size(180, 22);
+            this.mnuSyllable.Size = new System.Drawing.Size(177, 22);
             this.mnuSyllable.Text = "Modo sílabas";
             this.mnuSyllable.ToolTipText = "Carrega o modo de sílabas";
             this.mnuSyllable.Click += new System.EventHandler(this.mnuSyllable_Click);
@@ -174,12 +181,12 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(174, 6);
             // 
             // mnuInformation
             // 
             this.mnuInformation.Name = "mnuInformation";
-            this.mnuInformation.Size = new System.Drawing.Size(180, 22);
+            this.mnuInformation.Size = new System.Drawing.Size(177, 22);
             this.mnuInformation.Text = "Informações";
             this.mnuInformation.ToolTipText = "Informações sobre mim";
             this.mnuInformation.Click += new System.EventHandler(this.mnuInformation_Click);
@@ -187,7 +194,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(180, 22);
+            this.mnuExit.Size = new System.Drawing.Size(177, 22);
             this.mnuExit.Text = "Sair";
             this.mnuExit.ToolTipText = "Sair do aplicativo";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
@@ -406,13 +413,6 @@
             this.pnlLowerHandwrite.Size = new System.Drawing.Size(516, 127);
             this.pnlLowerHandwrite.TabIndex = 32;
             // 
-            // mnuRestore
-            // 
-            this.mnuRestore.Name = "mnuRestore";
-            this.mnuRestore.Size = new System.Drawing.Size(180, 22);
-            this.mnuRestore.Text = "Restaurar";
-            this.mnuRestore.Click += new System.EventHandler(this.mnuRestore_Click);
-            // 
             // WordsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,8 +437,7 @@
             this.Name = "WordsForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cartilha mágica     *     pressione F1 para opções     *     cartilha.magica@gmx." +
-    "com.br";
+            this.Text = "Cartilha mágica     *     pressione F1 para opções ";
             this.SizeChanged += new System.EventHandler(this.WordsForm_SizeChanged);
             this.ctxMenu.ResumeLayout(false);
             this.pnlUpperLetter.ResumeLayout(false);

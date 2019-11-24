@@ -21,14 +21,7 @@ namespace CartilhaMagica.Manager
 
     public static class SetupManager
     {
-        public static HardDrive HD
-        {
-            get;
-            set;
-        }
-
-
-    
+       
 
         public static bool HasFont()
         {
