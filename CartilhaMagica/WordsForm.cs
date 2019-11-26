@@ -26,13 +26,13 @@ namespace CartilhaMagica
         private WordManager wm;
         private Color regularBackground;
         private event Action<string> WriteText;
-        private bool canNext;
+       
 
 
         public WordsForm()
         {
             InitializeComponent();
-            //configPencilCursor();
+            
             wm = new WordManager();
             this.MouseClick += Form_MouseClick;
             this.Load += WordsForm_Load;
@@ -164,14 +164,7 @@ namespace CartilhaMagica
             
         }
 
-        private void waitSpeak()
-        {
-            canNext = false;
-            Task.Run(() => {
-                Thread.Sleep(1000);
-                canNext = true;
-            });
-        }
+        
 
         private void speak(string text)
         {
@@ -191,7 +184,7 @@ namespace CartilhaMagica
             words = wm.GetWords(l, randomize: true, exclusive: true);
             applyWord();
             lblWrite.Text = "";
-            waitSpeak();
+            
         }
 
         private void applyWord()
@@ -225,8 +218,7 @@ namespace CartilhaMagica
 
         private void next()
         {
-            if (!canNext) return;
-            waitSpeak();
+            
 
             if (currentWordIndex < ((words?.Length ?? 0) - 1))
             {
@@ -292,8 +284,7 @@ namespace CartilhaMagica
                 if (checkWord())
                 {
                     congrats();
-                    Application.DoEvents();
-                    Thread.Sleep(1000);
+                    
                     next();
 
                 }
@@ -303,12 +294,7 @@ namespace CartilhaMagica
 
         private void adjustPencilPosition()
         {
-            /*this.pbxPencil.Left = lblWrite.Left + lblWrite.Width + 2;
-            //if (lblWrite.Font.Size <= 40)
-            this.pbxPencil.Top = lblWrite.Top - Convert.ToInt32(pbxPencil.Height * .75);*/
-            //else
-            //     this.pbxPencil.Top = lblWrite.Top;
-
+            
             this.pbxPencil.AdjustPencilPosition(lblWrite);
         }
 
