@@ -23,3 +23,11 @@ Se precisar falar comigo, manda um e-mail para cartilha.magica@gmx.com.br
 Um abraço!
 
 Antonio Ferrer
+
+#NOVIDADES
+21/12/19
+>> Salvamento automático da lição. (Continua de onde parou)
+>> Melhoria na funcionalidade de configuração de voz.
+>> Correção de alguns bugs e criação de outros :-)
+>> Remoção de arquivos desnecessários ao projeto
+>> Formulário de palavras pode avançar sem escrever a palavra. (Útil para aula de leitura)
