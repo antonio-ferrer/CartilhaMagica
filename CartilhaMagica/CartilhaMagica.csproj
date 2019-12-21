@@ -53,12 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateLessonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateLessonForm.Designer.cs">
+      <DependentUpon>CreateLessonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataWordsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataWordsForm.Designer.cs">
       <DependentUpon>DataWordsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Lesson.cs" />
+    <Compile Include="Entities\SyllablesLesson.cs" />
     <Compile Include="InformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +98,9 @@
       <DependentUpon>VoiceSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager\WordManager.cs" />
+    <EmbeddedResource Include="CreateLessonForm.resx">
+      <DependentUpon>CreateLessonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataWordsForm.resx">
       <DependentUpon>DataWordsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,52 +141,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Always In My Heart.ttf" />
-    <None Include="Resources\boca.PNG" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\acerto.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\caneta.PNG" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Leia-me.txt" />
     <None Include="Resources\hand.png" />
     <None Include="Resources\keyboard.png" />
     <None Include="Resources\maiuscula.png" />
-    <None Include="Resources\menino.png" />
     <None Include="Resources\mouth.png" />
-    <None Include="Resources\pencil64.png" />
-    <None Include="Resources\pencil100.png" />
     <None Include="Resources\robot.png" />
     <None Include="Resources\seta_cima_64.png" />
-    <None Include="Resources\shift.png" />
-    <None Include="Resources\altura.png" />
     <None Include="Resources\minuscula.png" />
     <None Include="Resources\exit.png" />
     <None Include="Resources\left arrow.png" />
     <None Include="Resources\right arrow.png" />
-    <None Include="Resources\seta esquerda.PNG" />
-    <None Include="Resources\seta direita.PNG" />
     <None Include="Resources\silver medal.png" />
     <None Include="Resources\bronze_medal.png" />
     <None Include="Resources\gold medal.png" />
-    <None Include="Resources\caderninho.png" />
-    <None Include="Resources\lapis2.jpg" />
-    <None Include="Resources\lousa1.jpg" />
-    <None Include="Resources\cadernao1.png" />
     <None Include="Resources\folha caderno.png" />
-    <None Include="Resources\cadernao2.png" />
-    <None Include="Resources\robot teacher.jfif" />
-    <None Include="Resources\robot teacher.png" />
-    <None Include="Resources\red robot.png" />
     <None Include="Resources\cadernao3.png" />
-    <None Include="Resources\lapis4.png" />
-    <None Include="Resources\lapis5.png" />
-    <None Include="Resources\0-4688_pencil-clipart-png-transparent-background-pencil-icon.png" />
     <None Include="Resources\0-4688_pencil-clipart.png" />
     <None Include="Resources\clipartwiki.com-robot-clip-art-128797.png" />
-    <None Include="Resources\clipartwiki.com-technology-clip-art-144496.png" />
     <Content Include="book.ico" />
     <None Include="settings.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

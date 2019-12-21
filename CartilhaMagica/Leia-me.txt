@@ -4,10 +4,10 @@ A proposta do aplicativo é bem simples, uma parte é um dicionário de palavras
 
 A atratatividade para os pequenos é o módulo de voz do windows 10. O google tem um recurso de fala bem interessante, porém requer uma assinatura.
 
-A parte visual não é o meu forte e eu espero que talvez você possa dar um jeito nisso! Talvez migrando para WPF, ou fazendo uma UI mista de html... 
+A parte visual não é o meu forte e eu espero que talvez você possa dar um jeito nisso! Talvez migrando para WPF, ou fazendo uma UI mista com html... 
 
 
-O arquivo settings.dat é um xml que contém as informações para o execução do aplicativo. Ele está "embedado" nos Resources.
+O arquivo settings.dat é um xml que contém as informações para o execução do aplicativo. Ele está "embedado" nos Resources, e após a primeira execução fica armazenado em %TEMP%
 
 Algumas idéias para implementação: 
 
@@ -26,3 +26,5 @@ Se precisar falar comigo, manda um e-mail para cartilha.magica@gmx.com.br
 Um abraço!
 
 Antonio Ferrer
+
+[v0.91]

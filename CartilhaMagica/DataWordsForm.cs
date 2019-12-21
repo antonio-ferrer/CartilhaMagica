@@ -13,7 +13,7 @@ namespace CartilhaMagica
     public partial class DataWordsForm : Form
     {
 
-        private Manager.WordManager wm;
+        private readonly Manager.WordManager wm;
         public DataWordsForm()
         {
             InitializeComponent();

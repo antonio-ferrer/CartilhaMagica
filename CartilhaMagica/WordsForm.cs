@@ -1,18 +1,8 @@
 ﻿using CartilhaMagica.Manager;
 using CartilhaMagica.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Speech.Synthesis;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CartilhaMagica
@@ -26,113 +16,46 @@ namespace CartilhaMagica
         private WordManager wm;
         private Color regularBackground;
         private event Action<string> WriteText;
-       
-
+        private static WordsForm Instance { get; set; }
 
         public WordsForm()
         {
             InitializeComponent();
-            
             wm = new WordManager();
             this.MouseClick += Form_MouseClick;
             this.Load += WordsForm_Load;
             regularBackground = lblWrite.BackColor;
-            this.WriteText += WordsForm_WriteText;
         }
 
-        private void WordsForm_WriteText(string obj)
+        public static WordsForm GetForm()
         {
-
+            if (Instance == null || Instance.IsDisposed)
+            {
+                Instance = new WordsForm();
+            }
+            return Instance;
         }
 
         private void WordsForm_Load(object sender, EventArgs e)
         {
-            loadLevel(Level.Easy);
+            var data = wm.GetCurrentWordState(out int idx, out byte lvl);
+            if (data != null && idx > 0 && idx < data.Length - 1 /*&& MessageBox.Show("Deseja continuar de onde parou?", "Atenção",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes*/)
+            {
+                loadLevel((Level)lvl, data, idx);
+            }
+            else
+                loadLevel(Level.Easy);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            //handleKeyAnimation();
-
-            switch (keyData)
-            {
-                case Keys.Enter:
-                case Keys.CapsLock:
-                case Keys.Shift:
-                case Keys.ShiftKey:
-                case Keys.ControlKey:
-                case Keys.Control:
-                case Keys.Alt:
-                    return false;
-            }
-
-            if(keyData == Keys.F1)
-            {
-                ctxMenu.Show(this, 5, 5);
-                return true;
-            }
-
-            if (keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-
-            if (keyData.HasFlag(Keys.Shift) || keyData.HasFlag(Keys.Control))
-            {
-                if (keyData.HasFlag(Keys.Escape))
-                {
-                    ctxMenu.Show(this, 5, 5);
-                    return true;
-                }
-                return false;
-            }
-
-            if (keyData == Keys.Delete || keyData == Keys.Back)
-            {
-                if (lblWrite.Text.Length > 0)
-                {
-                    lblWrite.Text = lblWrite.Text.Substring(0, lblWrite.Text.Length - 1);
-                    WriteText?.Invoke(lblWrite.Text);
-                    return true;
-                }
-            }
-
-            int kIdx = (int)keyData;
-
-            if (kIdx >= 65 && kIdx <= 90)
-            {
-                lblWrite.Text += keyData.ToString().ToLower();
-                WriteText?.Invoke(lblWrite.Text);
-                return true;
-            }
-
-            switch (keyData)
-            {
-                case Keys.Space:
-                    lblWrite.Text += " ";
-                    WriteText?.Invoke(lblWrite.Text);
-                    return true;
-
-                case Keys.Oem1:
-                    lblWrite.Text += "ç";
-                    WriteText?.Invoke(lblWrite.Text);
-                    return true;
-
-                case Keys.OemMinus:
-                case Keys.Subtract:
-                    lblWrite.Text += "-";
-                    WriteText?.Invoke(lblWrite.Text);
-                    return true;
-            }
-
-
-            bool r = base.ProcessCmdKey(ref msg, keyData);
-            return r;
+            bool r = ControlManager.HandleKeyboard(ref msg, keyData, lblWrite.Text, txt => lblWrite.Text = txt, (x, y) => ctxMenu.Show(this, x, y), Close);
+            return r || base.ProcessCmdKey(ref msg, keyData);
         }
 
 
-        private void loadLevel(Level l)
+        private void loadLevel(Level l, string[] data = null, int idx = 0)
         {
             try
             {
@@ -153,23 +76,22 @@ namespace CartilhaMagica
                         break;
                 }
                 currentLevel = l;
-                loadWords(l);
-                speak("Vamos escrever a palavra: " + words[0]);
+                loadWords(l, data, idx);
+                speak("Vamos escrever a palavra: " + words[idx]);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu uma falha ao carregar o nível!\r\nVerifique se há palavras cadastradas o suficiente.\r\nPara cadastrar mais palavras acesse a opção [Configurar Palavras]\r\n" + ex, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-            
-        }
+                MessageBox.Show("Ocorreu uma falha ao carregar o nível!\r\nVerifique se há palavras cadastradas o suficiente.\r\nPara cadastrar mais palavras acesse a opção [Configurar Palavras]\r\n" +
+                    ex, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        
+            }
+
+        }
 
         private void speak(string text)
         {
-            
-                SpeechManager.SpeakAsync(text);
+
+            SpeechManager.SpeakAsync(text);
         }
 
         private void speakCurrentWord()
@@ -177,14 +99,14 @@ namespace CartilhaMagica
             speak(words[currentWordIndex]);
         }
 
-        private void loadWords(Level l)
+        private void loadWords(Level l, string[] data = null, int idx = 0)
         {
-            currentWordIndex = 0;
-            lblCountWord.Text = "1";
-            words = wm.GetWords(l, randomize: true, exclusive: true);
+            currentWordIndex = idx;
+            lblCountWord.Text = (idx + 1).ToString();
+            words = data ?? wm.GetWords(l, randomize: true, exclusive: true);
             applyWord();
             lblWrite.Text = "";
-            
+
         }
 
         private void applyWord()
@@ -202,30 +124,33 @@ namespace CartilhaMagica
             if (result)
             {
                 lblWrite.Text = lblUpperLetter.Text.ToLower();
+                Application.DoEvents();
+                Thread.Sleep(500);
             }
             return result;
         }
 
         private void congrats()
         {
-            /*pbxPencil.BackColor = pnlWrite.BackColor = */lblWrite.BackColor = Color.GreenYellow;
+            /*pbxPencil.BackColor = pnlWrite.BackColor = */
+            lblWrite.BackColor = Color.GreenYellow;
         }
 
         private void regularWrite()
         {
-            /*pbxPencil.BackColor = pnlWrite.BackColor = */lblWrite.BackColor = regularBackground;
+            /*pbxPencil.BackColor = pnlWrite.BackColor = */
+            lblWrite.BackColor = regularBackground;
         }
 
         private void next()
         {
-            
-
             if (currentWordIndex < ((words?.Length ?? 0) - 1))
             {
                 currentWordIndex++;
                 applyWord();
                 lblCountWord.Text = (currentWordIndex + 1).ToString();
                 speakCurrentWord();
+                wm.SaveCurrentWordState(words, currentWordIndex, (byte)currentLevel);
             }
             else
             {
@@ -274,42 +199,23 @@ namespace CartilhaMagica
         /// <param name="e"></param>
         private void lblWrite_SizeChanged(object sender, EventArgs e)
         {
-
-            doCrossThread(this, () =>
+            //doCrossThread(this, () =>
+            //{
+            adjustPencilPosition();
+            Application.DoEvents();
+            if (checkWord())
             {
-
-                adjustPencilPosition();
-                Application.DoEvents();
-
-                if (checkWord())
-                {
-                    congrats();
-                    
-                    next();
-
-                }
-                else regularWrite();
-            });
+                congrats();
+                next();
+            }
+            else regularWrite();
+            //});
         }
 
         private void adjustPencilPosition()
         {
-            
+
             this.pbxPencil.AdjustPencilPosition(lblWrite);
-        }
-
-        private void doCrossThread(Control ctrl, Action fx)
-        {
-            Task.Run(() => crossThread(ctrl, fx));
-        }
-
-        private void crossThread(Control ctrl, Action fx)
-        {
-            if (ctrl.InvokeRequired)
-            {
-                ctrl.Invoke(new Action(fx));
-            }
-            else fx();
         }
 
 
@@ -389,23 +295,29 @@ namespace CartilhaMagica
         private void mnuLevelEasy_Click(object sender, EventArgs e)
         {
             loadLevel(Level.Easy);
+            wm.SaveCurrentWordState(words, currentWordIndex, (byte)Level.Easy);
         }
 
         private void mnuLevelAverage_Click(object sender, EventArgs e)
         {
             loadLevel(Level.Average);
+            wm.SaveCurrentWordState(words, currentWordIndex, (byte)Level.Average);
         }
 
         private void mnuLevelHard_Click(object sender, EventArgs e)
         {
             loadLevel(Level.Hard);
+            wm.SaveCurrentWordState(words, currentWordIndex, (byte)Level.Hard);
         }
 
         private void mnuSyllable_Click(object sender, EventArgs e)
         {
-            new SyllableForm() { WindowState = this.WindowState }.ShowDialog();
-            loadLevel(currentLevel);
-
+            var form = SyllableForm.GetForm();
+            form.Left = this.Left;
+            form.Top = this.Top;
+            form.WindowState = this.WindowState;
+            form.Show();
+            this.Hide();
         }
 
         private void mnuExit_Click(object sender, EventArgs e)
@@ -453,7 +365,7 @@ namespace CartilhaMagica
                 msg = "Restauração efetuada!\r\nO aplpicativo deve ser iniciado novamente";
                 title = "Sucesso";
                 ico = MessageBoxIcon.Information;
-                
+
             }
             catch
             {
@@ -464,6 +376,11 @@ namespace CartilhaMagica
             }
             MessageBox.Show(msg, title, MessageBoxButtons.OK, ico);
             Application.Exit();
+        }
+
+        private void pbxNext_Click(object sender, EventArgs e)
+        {
+            next();
         }
     }
 

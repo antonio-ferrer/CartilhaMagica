@@ -62,6 +62,7 @@
             this.pnlUpperHandWrite = new System.Windows.Forms.Panel();
             this.pnlLowerHandwrite = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbxNext = new System.Windows.Forms.PictureBox();
             this.ctxMenu.SuspendLayout();
             this.pnlUpperLetter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUpperKeyboard)).BeginInit();
@@ -75,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxMouth)).BeginInit();
             this.pnlUpperHandWrite.SuspendLayout();
             this.pnlLowerHandwrite.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCountWord
@@ -370,7 +372,7 @@
             this.pbxPrevious.BackColor = System.Drawing.Color.Transparent;
             this.pbxPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxPrevious.Image = global::CartilhaMagica.Properties.Resources.left_arrow;
-            this.pbxPrevious.Location = new System.Drawing.Point(803, 615);
+            this.pbxPrevious.Location = new System.Drawing.Point(771, 615);
             this.pbxPrevious.Name = "pbxPrevious";
             this.pbxPrevious.Size = new System.Drawing.Size(49, 41);
             this.pbxPrevious.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -413,6 +415,21 @@
             this.pnlLowerHandwrite.Size = new System.Drawing.Size(516, 127);
             this.pnlLowerHandwrite.TabIndex = 32;
             // 
+            // pbxNext
+            // 
+            this.pbxNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxNext.BackColor = System.Drawing.Color.Transparent;
+            this.pbxNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxNext.Image = global::CartilhaMagica.Properties.Resources.right_arrow;
+            this.pbxNext.Location = new System.Drawing.Point(826, 615);
+            this.pbxNext.Name = "pbxNext";
+            this.pbxNext.Size = new System.Drawing.Size(49, 41);
+            this.pbxNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNext.TabIndex = 33;
+            this.pbxNext.TabStop = false;
+            this.toolTip1.SetToolTip(this.pbxNext, "Voltar para a palavra anterior");
+            this.pbxNext.Click += new System.EventHandler(this.pbxNext_Click);
+            // 
             // WordsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,6 +437,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::CartilhaMagica.Properties.Resources.cadernao3;
             this.ClientSize = new System.Drawing.Size(1057, 681);
+            this.Controls.Add(this.pbxNext);
             this.Controls.Add(this.pbxPencil);
             this.Controls.Add(this.pbxMouth);
             this.Controls.Add(this.lblWrite);
@@ -456,6 +474,7 @@
             this.pnlUpperHandWrite.PerformLayout();
             this.pnlLowerHandwrite.ResumeLayout(false);
             this.pnlLowerHandwrite.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,6 +514,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripMenuItem mnuInformation;
         private System.Windows.Forms.ToolStripMenuItem mnuRestore;
+        private System.Windows.Forms.PictureBox pbxNext;
     }
 }
 

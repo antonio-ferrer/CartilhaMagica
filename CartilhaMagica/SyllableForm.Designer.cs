@@ -59,6 +59,7 @@
             this.pbxNext = new System.Windows.Forms.PictureBox();
             this.pbxPencil = new System.Windows.Forms.PictureBox();
             this.pbxMouth = new System.Windows.Forms.PictureBox();
+            this.mnuRestart = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenu.SuspendLayout();
             this.pnlLetter.SuspendLayout();
             this.pnlHandWrite.SuspendLayout();
@@ -72,21 +73,22 @@
             // 
             this.ctxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuConfigVoice,
-            this.mnuWords});
+            this.mnuWords,
+            this.mnuRestart});
             this.ctxMenu.Name = "ctxMenu";
-            this.ctxMenu.Size = new System.Drawing.Size(153, 48);
+            this.ctxMenu.Size = new System.Drawing.Size(153, 70);
             // 
             // mnuConfigVoice
             // 
             this.mnuConfigVoice.Name = "mnuConfigVoice";
-            this.mnuConfigVoice.Size = new System.Drawing.Size(152, 22);
+            this.mnuConfigVoice.Size = new System.Drawing.Size(180, 22);
             this.mnuConfigVoice.Text = "Configurar voz";
             this.mnuConfigVoice.Click += new System.EventHandler(this.mnuConfigVoice_Click);
             // 
             // mnuWords
             // 
             this.mnuWords.Name = "mnuWords";
-            this.mnuWords.Size = new System.Drawing.Size(152, 22);
+            this.mnuWords.Size = new System.Drawing.Size(180, 22);
             this.mnuWords.Text = "Modo palavras";
             this.mnuWords.Click += new System.EventHandler(this.mnuWords_Click);
             // 
@@ -419,6 +421,13 @@
             this.pbxMouth.TabStop = false;
             this.pbxMouth.Click += new System.EventHandler(this.pbxMouth_Click);
             // 
+            // mnuRestart
+            // 
+            this.mnuRestart.Name = "mnuRestart";
+            this.mnuRestart.Size = new System.Drawing.Size(180, 22);
+            this.mnuRestart.Text = "Reiniciar";
+            this.mnuRestart.Click += new System.EventHandler(this.mnuRestart_Click);
+            // 
             // SyllableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,6 +451,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cartilha mágica     *     pressione F1 para opções ";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SyllableForm_FormClosed);
             this.SizeChanged += new System.EventHandler(this.SyllableForm_SizeChanged);
             this.ctxMenu.ResumeLayout(false);
             this.pnlLetter.ResumeLayout(false);
@@ -488,6 +498,7 @@
         private System.Windows.Forms.Label lblUpperHandwrite2;
         private System.Windows.Forms.PictureBox pbxPencil;
         private System.Windows.Forms.PictureBox pbxMouth;
+        private System.Windows.Forms.ToolStripMenuItem mnuRestart;
     }
 }
 

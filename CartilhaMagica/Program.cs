@@ -29,10 +29,10 @@ namespace CartilhaMagica
             }
             else
             {
-                f = new WordsForm();
+                f =  WordsForm.GetForm();
             }
 
-            Application.Run(f);
+            Application.Run(f);//new CreateLessonForm());
         }
     }
 }

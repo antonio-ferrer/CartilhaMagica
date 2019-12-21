@@ -47,8 +47,17 @@ namespace CartilhaMagica
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void chkVoice_CheckedChanged(object sender, EventArgs e)
+        {
             Manager.SpeechManager.ApplySettings(((VoiceInfo)cboVoice.SelectedItem).Name, trbSpeed.Value, chkVoice.Checked);
-            this.Close();
+        }
+
+        private void VoiceSettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Manager.SpeechManager.ApplySettings(((VoiceInfo)cboVoice.SelectedItem).Name, trbSpeed.Value, chkVoice.Checked);
         }
     }
 }

@@ -35,7 +35,6 @@
             this.lblVoice = new System.Windows.Forms.Label();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
-            this.btnApply = new System.Windows.Forms.Button();
             this.chkVoice = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trbSpeed)).BeginInit();
             this.SuspendLayout();
@@ -96,7 +95,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(498, 25);
+            this.btnTest.Location = new System.Drawing.Point(351, 184);
             this.btnTest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(82, 34);
@@ -104,17 +103,6 @@
             this.btnTest.Text = "Testar";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // btnApply
-            // 
-            this.btnApply.Location = new System.Drawing.Point(498, 137);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(82, 34);
-            this.btnApply.TabIndex = 7;
-            this.btnApply.Text = "Aplicar";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // chkVoice
             // 
@@ -125,14 +113,14 @@
             this.chkVoice.TabIndex = 8;
             this.chkVoice.Text = "Voz habilitada";
             this.chkVoice.UseVisualStyleBackColor = true;
+            this.chkVoice.CheckedChanged += new System.EventHandler(this.chkVoice_CheckedChanged);
             // 
             // VoiceSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 246);
+            this.ClientSize = new System.Drawing.Size(458, 246);
             this.Controls.Add(this.chkVoice);
-            this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.lblSpeed);
             this.Controls.Add(this.lblVoice);
@@ -149,6 +137,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Configurações de voz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VoiceSettingsForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.trbSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -164,7 +153,6 @@
         private System.Windows.Forms.Label lblVoice;
         private System.Windows.Forms.Label lblSpeed;
         private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.CheckBox chkVoice;
     }
 }
